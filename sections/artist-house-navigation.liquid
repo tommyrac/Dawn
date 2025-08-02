@@ -47,7 +47,7 @@
 {% endstyle %}
 
 <div class="artist-house-navigation section-{{ section.id }}-padding" 
-     style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% if section.settings.background_image != blank %}{{ section.settings.background_image | image_url }}{% else %}{{ 'dawn-home.png' | asset_url }}{% endif %}');">
+     style="background: url('{% if section.settings.background_image != blank %}{{ section.settings.background_image | image_url }}{% else %}{{ 'dawn-home.png' | asset_url }}{% endif %}');">
   <header class="artist-house-header">
     <nav>
       <ul class="nav-menu">
