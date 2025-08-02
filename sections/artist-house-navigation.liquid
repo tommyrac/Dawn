@@ -1,9 +1,9 @@
-{{ 'base.css' | asset_url | stylesheet_tag }}
+{{ 'artist-house.css' | asset_url | stylesheet_tag }}
 
 {% style %}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -16,11 +16,6 @@
   .artist-house-navigation {
     position: relative;
     min-height: {{ section.settings.section_height }}vh;
-    {% if section.settings.background_image != blank %}
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ section.settings.background_image | image_url }}');
-    {% else %}
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images-sp.summitpost.org/tr:e-sharpen,e-contrast-1,fit-max,q-60,w-1024/390596.JPG');
-    {% endif %}
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -51,7 +46,8 @@
   }
 {% endstyle %}
 
-<div class="artist-house-navigation section-{{ section.id }}-padding">
+<div class="artist-house-navigation section-{{ section.id }}-padding" 
+     style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% if section.settings.background_image != blank %}{{ section.settings.background_image | image_url }}{% else %}{{ 'dawn-home.png' | asset_url }}{% endif %}');">
   <header class="artist-house-header">
     <nav>
       <ul class="nav-menu">

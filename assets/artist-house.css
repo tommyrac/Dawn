@@ -8,10 +8,6 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images-sp.summitpost.org/tr:e-sharpen,e-contrast-1,fit-max,q-60,w-1024/390596.JPG');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: #ffffff;
   overflow: hidden;
   height: 100vh;
@@ -110,7 +106,7 @@ body {
   justify-content: center;
 }
 
-/* Individual room positions - modify these coordinates */
+/* Individual room positions */
 .room-card[data-room-name="Front"] {
   top: 49%;
   left: 36%;
@@ -156,6 +152,7 @@ body {
   left: 80%;
 }
 
+/* White dots for room cards */
 .room-card::before {
   content: '';
   position: absolute;
@@ -175,6 +172,7 @@ body {
   transform: translate(-50%, -50%) scale(1.2);
 }
 
+/* Room name labels on hover */
 .room-card::after {
   content: attr(data-room-name);
   position: absolute;
@@ -202,6 +200,7 @@ body {
   left: 25px;
 }
 
+/* Current room display */
 .current-room {
   text-align: center;
   padding: 2rem;
@@ -228,6 +227,16 @@ body {
   margin: 0 auto;
 }
 
+/* Active room styling */
+.room-card.active::before {
+  background: rgba(78, 205, 196, 0.9);
+}
+
+.room-card.active:hover::before {
+  background: rgba(78, 205, 196, 1);
+}
+
+/* Mobile responsive */
 @media (max-width: 768px) {
   .nav-menu {
     position: fixed;
@@ -311,14 +320,6 @@ body {
     top: 55%;
     left: 75%;
   }
-}
-
-.room-card.active::before {
-  background: rgba(78, 205, 196, 0.9);
-}
-
-.room-card.active:hover::before {
-  background: rgba(78, 205, 196, 1);
 }
 
 .breadcrumb {
