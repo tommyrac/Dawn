@@ -83,12 +83,7 @@
       {% endfor %}
     </div>
 
-    {% if section.settings.show_current_room_info %}
-      <div class="current-room">
-        <h2>{{ section.settings.current_room_title | default: 'Welcome to Artist House' }}</h2>
-        <p>{{ section.settings.current_room_description | default: 'Navigate through different rooms using the interactive dots on the screen.' }}</p>
-      </div>
-    {% endif %}
+
   </main>
 </div>
 
