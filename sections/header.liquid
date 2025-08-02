@@ -1,0 +1,122 @@
+{% comment %}
+  Basic header section for Artist House theme
+{% endcomment %}
+
+<header class="header" role="banner">
+  <div class="header__content">
+    {% if section.settings.show_logo %}
+      <div class="header__logo">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="200" height="auto">
+        {% else %}
+          <h1>{{ shop.name }}</h1>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    {% if section.settings.show_navigation %}
+      <nav class="header__nav" role="navigation">
+        <ul class="nav-list">
+          {% for link in linklists[section.settings.menu].links %}
+            <li class="nav-item">
+              <a href="{{ link.url }}" class="nav-link">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+</header>
+
+{% style %}
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    z-index: 1000;
+    padding: 1rem 2rem;
+  }
+  
+  .header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header__logo h1 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
+  
+  .nav-link:hover {
+    opacity: 1;
+    color: #4ecdc4;
+  }
+  
+  @media (max-width: 768px) {
+    .header__content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .nav-list {
+      gap: 1rem;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_logo",
+      "label": "Show logo",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation",
+      "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

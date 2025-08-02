@@ -1,0 +1,91 @@
+{% comment %}
+  Basic footer section for Artist House theme
+{% endcomment %}
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__content">
+    {% if section.settings.show_footer_text %}
+      <div class="footer__text">
+        {{ section.settings.footer_text }}
+      </div>
+    {% endif %}
+    
+    {% if section.settings.show_social_links %}
+      <div class="footer__social">
+        {% if settings.social_twitter_link != blank %}
+          <a href="{{ settings.social_twitter_link }}" target="_blank" rel="noopener" aria-label="Twitter">
+            Twitter
+          </a>
+        {% endif %}
+        {% if settings.social_facebook_link != blank %}
+          <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook">
+            Facebook
+          </a>
+        {% endif %}
+        {% if settings.social_instagram_link != blank %}
+          <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
+            Instagram
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</footer>
+
+{% style %}
+  .footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+  }
+  
+  .footer__content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer__text {
+    margin-bottom: 1rem;
+  }
+  
+  .footer__social a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .footer__social a:hover {
+    opacity: 1;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_footer_text",
+      "label": "Show footer text",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "© 2024 Artist House. All rights reserved."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_links",
+      "label": "Show social links",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

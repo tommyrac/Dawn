@@ -1,0 +1,60 @@
+{% comment %}
+  Announcement bar section for Artist House theme
+{% endcomment %}
+
+{% if section.settings.show_announcement %}
+  <div class="announcement-bar">
+    <div class="announcement-bar__content">
+      {{ section.settings.announcement_text }}
+    </div>
+  </div>
+{% endif %}
+
+{% style %}
+  .announcement-bar {
+    background: {{ section.settings.background_color | default: '#000000' }};
+    color: {{ section.settings.text_color | default: '#ffffff' }};
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1001;
+  }
+  
+  .announcement-bar__content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": false
+    },
+    {
+      "type": "textarea",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Welcome to Artist House"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}
