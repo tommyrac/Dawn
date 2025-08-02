@@ -1,0 +1,22 @@
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "header": {
+      "type": "header",
+      "disabled": true,
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}
